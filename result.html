@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generated</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1> Password Generated!</h1>
+        
+        <div class="result-box">
+            <p class="password-length">Length: {{ length }} characters</p>
+            <div class="password-display">
+                <span id="password-text">{{ password }}</span>
+                <button onclick="CopyPassword()" class="copy-btn"> copy</button>
+            </div>
+            <p class="security-note">{Don't share  the password  with any one}</p>
+        </div>
+        
+        <div class="button-group">
+            <a href="/" class="btn-secondary">create new password</a>
+            <button onclick="location.reload()" class="btn-secondary">Refresh</button>
+        </div>
+    </div>
+    
+    <script>
+        function copyPassword() {
+            const passwordText = document.getElementById('password-text');
+            const textArea = document.createElement('textarea');
+            textArea.value = passwordText.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            // Show feedback
+            const copyBtn = document.querySelector('.copy-btn');
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = '✓ Copied!';
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

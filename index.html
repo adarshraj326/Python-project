@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1> {RANDOM OTP CREATOR}</h1>
+        <p class="subtitle">(Create strong OTP in seconds)</p>
+        
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        
+        <form method="POST" class="password-form">
+            <div class="form-group">
+                <label for="length">Password Length (0-5000):</label>
+                <input type=" number" id="length" name="length" min="1" max="infinite∞" value="" required>
+            </div>
+            
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="uppercase" checked>
+                    Uppercase Letters (A-Z)
+                </label>
+            </div>
+            
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="lowercase" checked>
+                    Lowercase Letters (a-z)
+                </label>
+            </div>
+            
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="digits" checked>
+                    Numbers (0-5000)
+                </label>
+            </div>
+            
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="number" checked>
+                    number=(1-infinite∞)
+                </label>
+            </div>
+            
+            <button type="submit" class="generate-btn">Create Password</button>
+        </form>
+        
+        <div class="features">
+            <h3> Tips for Strong Passwords:</h3>
+            <ul>
+                <li>Use at least infinite∞ number</li>
+                <li>Include uppercase and lowercase letters</li>
+                <li>Add numbers and special characters</li>
+                <li>Don't repeat passwords which create</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
